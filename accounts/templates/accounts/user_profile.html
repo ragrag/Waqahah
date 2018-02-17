@@ -1,0 +1,294 @@
+
+{% extends 'accounts/base.html' %}
+{% block title %}Waqahah - {{user.username}}{% endblock %}
+{% block body %}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" >
+	<div class="row" >
+
+
+
+
+
+         <div id="main" class="col-lg-5 col-sm-6" style="position:absolute;left:-10%;">
+<p>ad section</p><br>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sky_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-5954656219348211"
+     data-ad-slot="2071172027"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        </div>
+
+
+
+		<div  id="main" class="col-lg-5 col-sm-6" style="position:absolute;left:30%;" >
+            <div class="card hovercard" >
+
+                <div class="cardheader"style="display:inline-block;">
+
+                </div>
+
+
+
+
+				{% if user.profile.avatar %}
+
+
+                 <div class="avatar">
+
+                     <img src="{{user.profile.avatar.url}}"/>
+
+                          {% if request.user == user %}
+                         <a style="font-size:small;" href="/editprofile/dp">Edit photo</a>
+                          {% endif %}
+
+                </div>
+           <br> {% if request.user == user %}  &nbsp;
+                  <a href="http://www.facebook.com/sharer.php?u=https://www.waqahah.com/users/{{user}}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="/media/sfb2.png" /></a>
+
+              <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?url=https://www.waqahah.com/users/{{user}}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="/media/stw.png" /></a>
+                {% endif %}
+				{% endif %}
+
+
+                <div class="info">
+                    <div style= "font-size:large;" class="description">
+                       &nbsp;&nbsp; <a  style="color:#154436" href="/users/{{user.username}}"><b>{{user.username}}</b></a>
+
+                         {% if user.is_staff %}
+	                    &#9733;
+                     {% endif %}
+
+                    </div>
+					   <b>{{user.first_name}}</b>
+					
+                    <div class="desc">
+					<b>{{user.profile.about}}</b>
+					</div>
+
+                </div>
+				{% if request.user == user %}
+
+<div>
+    <a style="color:#154436" href="/editprofile"><button>Edit Profile</button></a>
+</div>
+
+{% endif %}
+            </div>
+{% if request.user == user %}
+<script>
+$(document).ready(function() {
+$(".btn-pref .btn").click(function () {
+    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+    // $(".tab").addClass("active"); // instead of this do the below
+    $(this).removeClass("btn-default").addClass("btn-primary");
+});
+});
+</script>
+		<div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+		<div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                <div class="hidden-xs">Messages {% if posts %}({{ posts.count}}){% endif %}</div>
+            </button>
+        </div>
+		
+		<div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">Favourites</div>
+            </button>
+        </div>
+
+
+            <div class="btn-group" role="group">
+            <button type="button" id="sent" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                <div class="hidden-xs">Sent {% if sentposts %}({{ sentposts.count}}){% endif %}</div>
+            </button>
+        </div>
+			</div>
+			
+	<div class="well">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+          
+		  
+		  <ul class="list-unstyled" id="postli">
+        {% for Post in posts %}
+
+              <li>
+
+
+
+                  {% if Post.like != "" %}<p style="display:inline;"><b>Like <br></b> </p> {{Post.like}}<hr class="myhr" >{% endif %}
+                 {% if Post.first_impression != "" %} <p style="display:inline;"><b>First Impression <br></b></p> {{Post.first_impression}}<hr class="myhr" >{% endif %}
+                  {% if Post.current_impression != "" %}<p style="display:inline;"><b>Current Impression <br></b></p> {{Post.current_impression}}<hr class="myhr" >{% endif %}
+                  {% if Post.message != "" %} <p style="display:inline;"><b>Message <br></b></p> {{Post.message}}<hr class="myhr" >{% endif %}
+                  {% if Post.dislike != "" %} <p style="display:inline;color:#FF0000;"><b>Waqahah <br></b></p> {{Post.dislike}}<hr class="myhr" >{% endif %}
+
+
+
+                  <a href="/posts/{{Post.id}}">{{Post.date_created}}</a><br>
+              {% if request.user == Post.receiver %}
+             <a href="{% url 'delete_post' Post.id %}"><img width="15px" height="15px" src="/media/del.png" /></a>&nbsp
+                 {% if Post.fav == True %}
+
+              <a href="{% url 'unfav_post' Post.id %}"><img width="13px" height="13px" src="/media/unfav.png" /></a>
+                  {% elif  Post.fav == False %}
+                  <a  href="{% url 'fav_post' Post.id %}"><img width="13px" height="13px" src="/media/fav.png" /></a>
+                  {% endif %}
+                  {% endif %} &nbsp;
+                  <a href="http://www.facebook.com/sharer.php?u=https://www.waqahah.com/posts/{{Post.id}}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="/media/sfb2.png" /></a>
+
+              <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?url=https://www.waqahah.com/posts/{{Post.id}}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="/media/stw.png" /></a>
+
+              </li><hr>
+
+
+
+        {% endfor %}
+    </ul>
+		  
+        </div>
+        <div class="tab-pane fade in" id="tab2">
+          <ul class="list-unstyled" id="postli">
+        {% for Post in posts %}
+            {% if Post.fav %}
+              <li>
+
+
+
+                  {% if Post.like != "" %}<p style="display:inline;"><b>Like <br></b> </p> {{Post.like}}<hr class="myhr" >{% endif %}
+                 {% if Post.first_impression != "" %} <p style="display:inline;"><b>First Impression <br></b></p> {{Post.first_impression}}<hr class="myhr" >{% endif %}
+                  {% if Post.current_impression != "" %}<p style="display:inline;"><b>Current Impression <br></b></p> {{Post.current_impression}}<hr class="myhr" >{% endif %}
+                  {% if Post.message != "" %} <p style="display:inline;"><b>Message <br></b></p> {{Post.message}}<hr class="myhr" >{% endif %}
+                  {% if Post.dislike != "" %} <p style="display:inline;color:#FF0000;"><b>Waqahah <br></b></p> {{Post.dislike}}<hr class="myhr" >{% endif %}
+
+         <a href="/posts/{{Post.id}}">{{Post.date_created}}</a><br> </li><hr>
+
+
+        {% if request.user == Post.receiver %}
+              <a  href="{% url 'delete_post' Post.id %}"><img width="15px" height="15px" src="/media/del.png" /></a>&nbsp
+               <a  href="{% url 'unfav_post' Post.id %}"><img width="13px" height="13px" src="/media/unfav.png" /></a>
+              {% endif %}
+              {% endif %}
+        {% endfor %}
+    </ul>
+		  
+        </div>
+
+
+
+          <div class="tab-pane fade in" id="tab3">
+           <ul class="list-unstyled" id="postli">
+
+                {% for Post in sentposts %}
+
+               <li>
+
+                   Sent To : <a style="color:#154436" href="/users/{{ Post.receiver}}"><b>{{Post.receiver}}</b></a><br>
+                   <li>
+
+  {% if Post.like != "" %}<p style="display:inline;"><b>Like <br></b> </p> {{Post.like}}<hr class="myhr" >{% endif %}
+                 {% if Post.first_impression != "" %} <p style="display:inline;"><b>First Impression <br></b></p> {{Post.first_impression}}<hr class="myhr" >{% endif %}
+                  {% if Post.current_impression != "" %}<p style="display:inline;"><b>Current Impression <br></b></p> {{Post.current_impression}}<hr class="myhr" >{% endif %}
+                  {% if Post.message != "" %} <p style="display:inline;"><b>Message <br></b></p> {{Post.message}}<hr class="myhr" >{% endif %}
+                  {% if Post.dislike != "" %} <p style="display:inline;color:#FF0000;"><b>Waqahah <br></b></p> {{Post.dislike}}<hr class="myhr" >{% endif %}
+
+                   Sent  <a href="/posts/{{Post.id}}">{{Post.date_created}}</a>
+
+                     </li><hr>
+                       {% endfor %}
+           </ul>
+
+
+        </div>
+
+
+      </div>
+    </div>
+            <br> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lb_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5954656219348211"
+     data-ad-slot="6121139818"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+{% else %}
+<div >
+<form class="form-group" method="post" >
+    <b>Nobody is perfect :)</b>
+  {% csrf_token %}
+  {{ postform.as_p }}
+   <button type="submit">Send</button>
+</form>
+    </div>
+{% endif %}			
+        </div>
+        <div id="main" class="col-lg-5 col-sm-6" style="position:absolute;left:60%;">
+{% if request.user == user %}
+             {% if social %}
+
+                     {% if friends %}
+            <script>
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+                    <h2> Friends ({{friends.count}})</h2><br>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                <ul id="myUL" class="list-unstyled" >
+                    {% for i in friends %}
+                    <li> <a href="/users/{{i.username}}">{{i.first_name}} {{i.last_name}}</a></li>
+                    {% endfor %}
+                </ul>
+                     {% elif not friends %}
+                          No Friends to show
+                      {% endif %}
+             {% elif not social %}
+            <b>Find Friends from Facebook</b><br>
+            <a href="{% url 'social:begin' 'facebook' %}"><img height="42px" width="230px" src="/media/cfb.png"/></a>
+                {% endif %}
+                {% endif %}
+
+
+        </div>
+
+
+	</div>
+
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <script>
+    $(".nav li").on("click", function() {
+      $(".nav li").removeClass("active");
+      $(this).addClass("active");
+    });
+
+</script>
+            <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+            <div id="sidebar" class="well sidebar-nav">
+                <h5><i class="glyphicon glyphicon-home"></i>
+                    <small><b>Edit Profile</b></small>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li ><a href="/editprofile/">General</a></li>
+                    <li class="active"><a href="/editprofile/about">About</a></li>
+                    <li><a href="/editprofile/password">Change Password</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-8">
+
+              <form method="post" enctype="multipart/form-data" >
+  {% csrf_token %}
+  {{ userform.as_p }}
+   <button type="submit">Save</button>
+           </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

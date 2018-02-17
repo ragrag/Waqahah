@@ -1,0 +1,93 @@
+
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" >
+	<div class="row" >
+		<div  id="main" class="col-lg-5 col-sm-6"   >
+
+            <div class="card hovercard" >
+                <div class="cardheader"style="display:inline-block;">
+
+                </div>
+                 <div class="avatar">
+                     <img src="{{user.profile.avatar.url}}"/>
+                </div>
+
+                <div class="info">
+                    <div class="title">
+                       &nbsp;&nbsp; <a  style="color:#154436" href="/users/{{user.username}}"><b>{{user.username}}</b></a>
+                         {% if user.is_staff %}
+	                    &#9733;
+                     {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+    <div class="col-xs-2 text-center">
+        VS
+    </div>
+
+
+
+<div  id="main" class="col-lg-5 col-sm-6"  >
+
+
+
+
+    {% if quser %}
+
+
+
+ <div class="card hovercard" >
+                <div class="cardheader"style="display:inline-block;">
+
+                </div>
+                 <div class="avatar">
+                     <img src="{{quser.profile.avatar.url}}"/>
+                </div>
+
+                <div class="info">
+                    <div class="title">
+                       &nbsp;&nbsp; <a  style="color:#154436" href="/users/{{quser.username}}"><b>{{quser.username}}</b></a>
+                         {% if quser.is_staff %}
+	                    &#9733;
+                     {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+    {% endif %}
+
+
+    </div>
+</div>
+
+ <form method="post" >
+  {% csrf_token %}
+  {{ queryform.as_p }}
+   <button type="submit">Search</button>
+</form>
+
+
+{% if quser %}
+<form action="/challenge/{{user.username}}/{{quser.username}}" >
+{% csrf_token %}
+   <button type="submit">Confirm Challenge</button>
+</form>
+    {% endif %}
+</div>
+{% endblock %}

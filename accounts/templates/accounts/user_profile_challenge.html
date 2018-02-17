@@ -1,0 +1,56 @@
+
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" >
+	<div class="row" >
+		<div  id="main" class="col-lg-5 col-sm-6" style="position:absolute;left:30%;" >
+
+            <div class="card hovercard" >
+                <div class="cardheader"style="display:inline-block;">
+
+                </div>
+				{% if challenge_on.profile.avatar %}
+
+
+                 <div class="avatar">
+                     <img src="{{challenge_on.profile.avatar.url}}"/>
+                </div>
+
+				{% endif %}
+				
+				
+                <div class="info">
+                    <div class="title">
+                       &nbsp;&nbsp; <a  style="color:#154436" href="/users/{{user.username}}"><b>{{challenge_on.username}}</b></a>
+                         {% if challenge_on.is_staff %}
+	                    &#9733;
+                     {% endif %}
+                    </div>
+					
+					
+                    <div class="desc">
+					<b>{{challenge_on.profile.about}}</b>
+					</div>
+                </div>
+
+            </div>
+
+<div >
+<form class="form-group" method="post" >
+    make your message destructive :)
+  {% csrf_token %}
+  {{ postform.as_p }}
+   <button type="submit">Send:(</button>
+</form>
+    </div>
+
+        </div>
+
+	</div>
+</div>
+
+{% endblock %}

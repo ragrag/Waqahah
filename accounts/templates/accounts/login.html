@@ -1,0 +1,18 @@
+
+{% extends 'accounts/base.html' %}
+{% block body %}
+ <div  style="display:inline-block;background-color:#EEE;">
+  <h2><b>LOGIN</b></h2>
+  <form id="loginform" method="post" >
+    {% csrf_token %}
+     {{ form.as_p }}
+
+     <button type="submit">Login</button>
+  </form>
+     <hr>
+ <a href="{% url 'social:begin' 'facebook' %}"><img height="37px" width="160px" src="/media/lfb.png"/></a>
+ </div>
+<div>
+
+  </div>
+{% endblock %}

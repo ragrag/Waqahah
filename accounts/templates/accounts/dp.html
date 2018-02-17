@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+
+
+
+
+<div class="col-md-12" style="padding-top:15px;">
+    <div class="panel panel-default panel-profile m-b-md">
+        <div class="panel-body text-center" style="padding: 5px 0 5px 0;">
+
+
+  <form method="post"  enctype="multipart/form-data" >
+  {% csrf_token %}
+  {{ userform.as_p }}
+   <button type="submit">Save</button>
+           </form>
+
+
+    </div>
+</div>
+
+{% endblock %}

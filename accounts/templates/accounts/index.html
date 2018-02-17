@@ -1,0 +1,104 @@
+
+
+{% extends 'accounts/base.html' %}
+{% block title %}Waqahah - HOME{% endblock %}
+{% load staticfiles %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'accounts/index.css' %}">
+{% endblock %}
+{% block body %}
+
+
+
+
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <img class="img-fluid" src="/media/bg5.png" alt="">
+        <div class="intro-text">
+
+          <hr class="star-light">
+          <span class="skills">NOBODY IS PERFECT</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+      <div class="container">
+
+         <div class="col-md-4">
+            <h1 style="color:#154436;">Make account»</h1>
+           <b><p>Start by creating your own profile</p></b>
+         </div>
+         <div class="col-md-4">
+            <h1 style="color:#154436;">Share Profile»</h1>
+           <b><p>Share your profile with friends</p></b>
+
+         </div>
+         <div class="col-md-4">
+            <h1 style="color:#154436;">Get Impressions</h1>
+           <b><p>Find out what friends think about you!</p></b>
+
+         </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="footer-above">
+        <div class="container">
+          <div class="row">
+            <div class="footer-col col-md-4">
+
+
+            </div>
+            <div class="footer-col col-md-4">
+              <h3>Mobile App</h3>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <img width="125px" height="53px" src="/media/gp.png">
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <img width="125px" height="53px" src="/media/ios.png">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col col-md-4">
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-below">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+
+                <a style="color:#ffffff;" href="/policy">Privacy Policy</a><br>
+
+                <details>
+                    <summary>Contact Us</summary>
+                    <p style="font-size:small;">softforsoul@gmail.com</p>
+                </details>
+
+              Copyright &copy; Waqahah 2017
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+
+{% endblock %}

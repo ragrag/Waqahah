@@ -1,0 +1,120 @@
+
+{% extends 'accounts/base.html' %}
+{% block title %}{{post.dislike}}
+
+
+
+
+  {% if post.like != "" %}{{post.like}}{% endif %}
+                 {% if post.first_impression != "" %} {{post.first_impression}}{% endif %}
+                  {% if post.current_impression != "" %}{{post.current_impression}}{% endif %}
+                  {% if post.message != "" %} {{post.message}}{% endif %}
+                  {% if post.dislike != "" %} {{post.dislike}}{% endif %}
+
+
+
+
+
+
+{% endblock %}
+{% block body %}
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+  <div id="main" class="col-lg-5 col-sm-6" style="position:absolute;left:-10%;">
+<p>ad section</p><br>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sky_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-5954656219348211"
+     data-ad-slot="2071172027"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        </div>
+
+<div class="container" >
+	<div class="row" >
+		<div  id="main" class="col-lg-5 col-sm-6" style="position:absolute;left:30%;" >
+
+            <div class="card hovercard" >
+                <div class="cardheader"style="display:inline-block;">
+
+                </div>
+				{% if user.profile.avatar %}
+
+
+                 <div class="avatar">
+                     <img src="{{user.profile.avatar.url}}"/>
+                </div>
+
+				{% endif %}
+
+				
+               <div class="info">
+                    <div style= "font-size:large;" class="description">
+                       &nbsp;&nbsp; <a  style="color:#154436" href="/users/{{user.username}}"><b>{{user.username}}</b></a>
+                         {% if user.is_staff %}
+	                    &#9733;
+                     {% endif %}
+
+                    </div>
+					   <b>{{user.first_name}}</b>
+					
+					
+                    <div class="desc">
+					<b>{{user.profile.about}}</b>
+					</div>
+
+                </div>
+
+            </div>
+            <div class="well">
+
+
+                  {% if post.like != "" %}<p style="display:inline;"><b>Like <br></b> </p> {{post.like}}<hr class="myhr" >{% endif %}
+                 {% if post.first_impression != "" %} <p style="display:inline;"><b>First Impression <br></b></p> {{post.first_impression}}<hr class="myhr" >{% endif %}
+                  {% if post.current_impression != "" %}<p style="display:inline;"><b>Current Impression <br></b></p> {{post.current_impression}}<hr class="myhr" >{% endif %}
+                  {% if post.message != "" %} <p style="display:inline;"><b>Message <br></b></p> {{post.message}}<hr class="myhr" >{% endif %}
+                  {% if post.dislike != "" %} <p style="display:inline;color:#FF0000;"><b>Waqahah <br></b></p> {{post.dislike}}<hr class="myhr" >{% endif %}
+
+
+
+         <a href="/posts/{{post.id}}">{{post.date_created}}</a><br>
+                 {% if request.user == post.receiver %}
+             <a href="{% url 'delete_post' post.id %}"><img width="15px" height="15px" src="/media/del.png" /></a>&nbsp
+                 {% if post.fav == True %}
+
+              <a href="{% url 'unfav_post' post.id %}"><img width="13px" height="13px" src="/media/unfav.png" /></a>
+                  {% elif  post.fav == False %}
+                  <a  href="{% url 'fav_post' post.id %}"><img width="13px" height="13px" src="/media/fav.png" /></a>
+                  {% endif %}
+              {% endif %} &nbsp;
+                  <a href="http://www.facebook.com/sharer.php?u=https://www.waqahah.com/posts/{{post.id}}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="/media/sfb2.png" /></a>
+
+              <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?url=https://www.waqahah.com/posts/{{post.id}}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="/media/stw.png" /></a>
+
+  </div>
+<br><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lb_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5954656219348211"
+     data-ad-slot="6121139818"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+
+
+	</div>
+</div>
+
+{% endblock %}
