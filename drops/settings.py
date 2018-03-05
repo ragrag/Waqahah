@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'rest_framework.authtoken',
     'django.contrib.auth',
-    'axes',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -157,6 +156,4 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = [
 
 ]
 
-AXES_LOGIN_FAILURE_LIMIT = 15
-AXES_COOLOFF_TIME = 0.166667
 

@@ -64,7 +64,7 @@ class Challenge(models.Model):
 
 class Post(models.Model):
     id = models.CharField(primary_key=True, max_length=32)
-    postedby = models.ForeignKey(User ,related_name="postedby", blank=True, null=True)
+    postedby = models.ForeignKey(User ,related_name="postedby", blank=True, null=True, on_delete=models.CASCADE)
     receiver = models.ForeignKey(User ,related_name="receivedby", on_delete=models.CASCADE)
     likedby = models.ManyToManyField(User, related_name='likedby')
     comments = models.ManyToManyField(Comment, related_name='comment')
@@ -75,7 +75,7 @@ class Post(models.Model):
     dislike = models.CharField(max_length=250,blank=True)
     fav = models.BooleanField(default=False)
     ischallenge = models.BooleanField(default=False)
-    challenge = models.ForeignKey(Challenge, related_name="challenge", blank=True, null=True)
+    challenge = models.ForeignKey(Challenge, related_name="challenge", blank=True, null=True, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
