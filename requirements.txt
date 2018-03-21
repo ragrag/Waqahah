@@ -3,3 +3,4 @@ requests==2.18.4
 social_auth_app_django==1.2.0
 django_braces==1.11.0
 djangorestframework==3.7.0
+Pillow
