@@ -51,11 +51,11 @@
                 </div>
            <br> {% if request.user == user %}  &nbsp;
                   <a href="http://www.facebook.com/sharer.php?u=https://www.waqahah.com/users/{{user}}" onclick="window.open(this.href, 'mywin',
-'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="/media/sfb2.png" /></a>
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="{% static 'accounts/sfb2.png' %}" /></a>
 
               <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet?url=https://www.waqahah.com/users/{{user}}" onclick="window.open(this.href, 'mywin',
-'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="/media/stw.png" /></a>
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="{% static 'accounts/stw.png' %}" /></a>
                 {% endif %}
 				{% endif %}
 
@@ -137,20 +137,20 @@ $(".btn-pref .btn").click(function () {
 
                   <a href="/posts/{{Post.id}}">{{Post.date_created}}</a><br>
               {% if request.user == Post.receiver %}
-             <a href="{% url 'delete_post' Post.id %}"><img width="15px" height="15px" src="/media/del.png" /></a>&nbsp
+             <a href="{% url 'delete_post' Post.id %}"><img width="15px" height="15px" src="{% static 'accounts/del.png' %}" /></a>&nbsp
                  {% if Post.fav == True %}
 
-              <a href="{% url 'unfav_post' Post.id %}"><img width="13px" height="13px" src="/media/unfav.png" /></a>
+              <a href="{% url 'unfav_post' Post.id %}"><img width="13px" height="13px" src="{% static 'accounts/unfav.png' %}" /></a>
                   {% elif  Post.fav == False %}
-                  <a  href="{% url 'fav_post' Post.id %}"><img width="13px" height="13px" src="/media/fav.png" /></a>
+                  <a  href="{% url 'fav_post' Post.id %}"><img width="13px" height="13px" src="{% static 'accounts/fav.png' %}" /></a>
                   {% endif %}
                   {% endif %} &nbsp;
                   <a href="http://www.facebook.com/sharer.php?u=https://www.waqahah.com/posts/{{Post.id}}" onclick="window.open(this.href, 'mywin',
-'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="/media/sfb2.png" /></a>
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="21px" height="21px" src="{% static 'accounts/sfb2.png' %}" /></a>
 
               <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet?url=https://www.waqahah.com/posts/{{Post.id}}" onclick="window.open(this.href, 'mywin',
-'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="/media/stw.png" /></a>
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img width="22px" height="22px" src="{% static 'accounts/stw.png' %}" /></a>
 
               </li><hr>
 
@@ -178,8 +178,8 @@ $(".btn-pref .btn").click(function () {
 
 
         {% if request.user == Post.receiver %}
-              <a  href="{% url 'delete_post' Post.id %}"><img width="15px" height="15px" src="/media/del.png" /></a>&nbsp
-               <a  href="{% url 'unfav_post' Post.id %}"><img width="13px" height="13px" src="/media/unfav.png" /></a>
+              <a  href="{% url 'delete_post' Post.id %}"><img width="15px" height="15px" src="{% static 'accounts/del.png' %}" /></a>&nbsp
+               <a  href="{% url 'unfav_post' Post.id %}"><img width="13px" height="13px" src="{% static 'accounts/unfav.png' %}" /></a>
               {% endif %}
               {% endif %}
         {% endfor %}
@@ -275,7 +275,7 @@ function myFunction() {
                       {% endif %}
              {% elif not social %}
             <b>Find Friends from Facebook</b><br>
-            <a href="{% url 'social:begin' 'facebook' %}"><img height="42px" width="230px" src="/media/cfb.png"/></a>
+            <a href="{% url 'social:begin' 'facebook' %}"><img height="42px" width="230px" src="{% static 'accounts/cfb.png' %}"/></a>
                 {% endif %}
                 {% endif %}
 
