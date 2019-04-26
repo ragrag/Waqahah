@@ -13,7 +13,7 @@ LOGIN_REDIRECT_URL = '/index/'
 SECRET_KEY = '2h5n9v11_qp_va=n$q0g)b$e+67$w@itb5)zdxls%k5-nmc018'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 
